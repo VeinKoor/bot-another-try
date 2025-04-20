@@ -2,6 +2,7 @@ from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
 from states.user_states import ChangeName
+from keyboards.start_kb import start_kb
 
 router = Router()
 
@@ -16,7 +17,7 @@ async def set_name(message: Message, state: FSMContext):
 
     #TODO Сделать сохранение data в БД
     data = await state.get_data()
-    await message.answer('Имя успешно изменено')
+    await message.answer('Имя успешно изменено', reply_markup=start_kb)
     await state.clear()
 
 
